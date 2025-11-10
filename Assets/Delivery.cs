@@ -15,9 +15,10 @@ public class Delivery : MonoBehaviour
   // This function is called when the object enters a trigger collider
   void OnTriggerEnter2D(Collider2D other)
   {
-    if (other.tag == "Package")
+    if (other.tag == "Package" && !hasPackage)
     {
       Debug.Log("Package picked up");
+      Destroy(other.gameObject, 0.5f);
       hasPackage = true;
     }
     if (other.tag == "Customer" && hasPackage)
